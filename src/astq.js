@@ -35,6 +35,7 @@ import ASTQAdapterJSON    from "./astq-adapter-json.js"
 import ASTQAdapterCHEERIO from "./astq-adapter-cheerio.js"
 import ASTQAdapterUNIST   from "./astq-adapter-unist.js"
 import ASTQAdapterASTY    from "./astq-adapter-asty.js"
+import ASTQAdapterESPREE  from "./astq-adapter-espree.js"
 import ASTQFuncs          from "./astq-funcs.js"
 import ASTQFuncsSTD       from "./astq-funcs-std.js"
 import ASTQQuery          from "./astq-query.js"
@@ -54,6 +55,7 @@ class ASTQ {
             .register(ASTQAdapterCHEERIO, false)
             .register(ASTQAdapterUNIST,   false)
             .register(ASTQAdapterASTY,    false)
+            .register(ASTQAdapterESPREE,  false)
 
         /*  create function registry and pre-register standard functions  */
         this._funcs = new ASTQFuncs()
@@ -88,6 +90,7 @@ class ASTQ {
                 else if (adapter === "cheerio") adapter = ASTQAdapterCHEERIO
                 else if (adapter === "unist")   adapter = ASTQAdapterUNIST
                 else if (adapter === "asty")    adapter = ASTQAdapterASTY
+                else if (adapter === "espree")  adapter = ASTQAdapterESPREE
                 else
                     throw new Error("ASTQ#adapter: unknown built-in adapter")
             }
